@@ -1,0 +1,34 @@
+﻿@model BLL.ViewModels.ApplicationUserViewModel
+@{
+    ViewData["Title"] = "User Details";
+}
+
+<h2>User Details</h2>
+
+<div class="card p-4">
+    <dl class="row">
+        <dt class="col-sm-3">Name</dt>
+        <dd class="col-sm-9">@Model.name</dd>
+
+        <dt class="col-sm-3">Email</dt>
+        <dd class="col-sm-9">@Model.Email</dd>
+
+        <dt class="col-sm-3">UserName</dt>
+        <dd class="col-sm-9">@Model.UserName</dd>
+
+        <dt class="col-sm-3">Gender</dt>
+        <dd class="col-sm-9">@Model.Gender</dd>
+
+        <dt class="col-sm-3">City</dt>
+        <dd class="col-sm-9">@Model.City</dd>
+
+        <dt class="col-sm-3">Specialist</dt>
+        <dd class="col-sm-9">@Model.Specialist</dd>
+
+        <dt class="col-sm-3">Is Doctor</dt>
+        <dd class="col-sm-9">@Model.IsDoctor</dd>
+    </dl>
+</div>
+
+<a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary mt-3">Edit</a>
+<a asp-action="Index" class="btn btn-secondary mt-3">Back</a>

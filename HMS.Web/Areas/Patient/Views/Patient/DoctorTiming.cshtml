@@ -1,0 +1,46 @@
+﻿@model IEnumerable<BLL.ViewModels.TimingViewModel>
+@using DAL
+@{
+    ViewData["Title"] = "Doctor Timing";
+}
+
+<h2 class="text-center mb-4">Available Timings</h2>
+
+<table class="table table-bordered table-hover">
+    <thead class="table-primary">
+        <tr>
+            <th>Date</th>
+            <th>Morning Start</th>
+            <th>Morning End</th>
+            <th>Afternoon Start</th>
+            <th>Afternoon End</th>
+            <th>Status</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.ScheduleDate.ToString("dd/MM/yyyy")</td>
+                <td>@item.MorningShiftStartTime:00</td>
+                <td>@item.MorningShiftEndTime:00</td>
+                <td>@item.AfternoonShiftStartTime:00</td>
+                <td>@item.AfternoonShiftEndTime:00</td>
+                <td>@item.Status</td>
+                <td>
+                    @if (item.Status == Status.Available)
+                    {
+                        <a asp-action="BookAppointment" asp-route-timingId="@item.Id" class="btn btn-success btn-sm">Book</a>
+                    }
+                    else
+                    {
+                        <span class="text-muted">Not Available</span>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a asp-action="Index" class="btn btn-secondary mt-3">Back to Doctor List</a>

@@ -1,0 +1,30 @@
+﻿@model IEnumerable<BLL.ViewModels.ApplicationUserViewModel>
+@{
+    ViewData["Title"] = "Doctor List";
+}
+
+<h2 class="text-center mb-4">Our Doctors</h2>
+
+<form method="get" class="mb-3">
+    <div class="input-group">
+        <input type="text" name="specialist" class="form-control" placeholder="Search by specialist" value="@Context.Request.Query["specialist"]" />
+        <button class="btn btn-primary" type="submit">Search</button>
+    </div>
+</form>
+
+<div class="row">
+    @foreach (var doctor in Model)
+    {
+        <div class="col-md-4 mb-4">
+            <div class="card text-center shadow h-100">
+                <div class="card-body">
+                    <h5 class="text-primary">@doctor.name</h5>
+                    <p class="text-muted">@doctor.Specialist</p>
+                    <p>@doctor.Email</p>
+                    <p>@doctor.City</p>
+                    <a asp-area="Patient" asp-controller="Patient" asp-action="DoctorTiming" asp-route-id="@doctor.Id" class="btn btn-primary">View Timing & Book</a>
+                </div>
+            </div>
+        </div>
+    }
+</div>

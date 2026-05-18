@@ -1,0 +1,33 @@
+﻿@model IEnumerable<DAL.Models.Payroll>
+@{
+    ViewData["Title"] = "Payrolls";
+}
+<h2>Payrolls</h2>
+<p><a class="btn btn-primary" asp-action="Create">Create New</a></p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Employee</th>
+            <th>Salary</th>
+            <th>Net</th>
+            <th>Bonus</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Employee?.Email</td>
+                <td>@item.Salary</td>
+                <td>@item.NetSalary</td>
+                <td>@item.BonusSalary</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

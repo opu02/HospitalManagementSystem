@@ -1,0 +1,29 @@
+﻿@model IEnumerable<DAL.Models.Bill>
+<h2 class="text-center mb-4">My Bills</h2>
+
+@if (!Model.Any())
+{
+    <div class="alert alert-info text-center">No bills found.</div>
+}
+else
+{
+    <table class="table table-bordered table-hover">
+        <thead class="table-primary">
+            <tr>
+                <th>Bill No</th>
+                <th>Doctor Charge</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var bill in Model)
+            {
+                <tr>
+                    <td>@bill.BillNumber</td>
+                    <td>@bill.DoctorCharge</td>
+                    <td>@bill.TotalBill</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

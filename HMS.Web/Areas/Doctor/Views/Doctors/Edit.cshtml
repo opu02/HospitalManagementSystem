@@ -1,0 +1,48 @@
+﻿@model BLL.ViewModels.TimingViewModel
+@{
+    ViewData["Title"] = "Edit Timing";
+}
+
+<h2>Edit Timing</h2>
+
+<form asp-action="Edit" method="post">
+    <input type="hidden" asp-for="Id" />
+
+    <div class="mb-3">
+        <label asp-for="ScheduleDate" class="form-label"></label>
+        <input asp-for="ScheduleDate" class="form-control" type="date" />
+        <span asp-validation-for="ScheduleDate" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="MorningShiftStartTime" class="form-label"></label>
+        <input asp-for="MorningShiftStartTime" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="MorningShiftEndTime" class="form-label"></label>
+        <input asp-for="MorningShiftEndTime" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="AfternoonShiftStartTime" class="form-label"></label>
+        <input asp-for="AfternoonShiftStartTime" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="AfternoonShiftEndTime" class="form-label"></label>
+        <input asp-for="AfternoonShiftEndTime" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Status" class="form-label"></label>
+        <select asp-for="Status" class="form-select">
+            <option value="Available">Available</option>
+            <option value="Confirm">Confirm</option>
+            <option value="Unavailable">Unavailable</option>
+        </select>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Update</button>
+    <a asp-action="Index" class="btn btn-secondary">Back</a>
+</form>

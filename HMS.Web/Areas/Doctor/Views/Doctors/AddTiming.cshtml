@@ -1,0 +1,53 @@
+﻿@model BLL.ViewModels.TimingViewModel
+@using DAL
+@{
+    ViewData["Title"] = "Add Timing";
+}
+
+<h2>Add Timing</h2>
+
+<form asp-action="AddTiming" method="post">
+    <div class="form-floating mb-3">
+        <input asp-for="Doctor.Id" class="form-control" />
+        <label asp-for="Doctor.Id">DoctorId</label>
+        <span asp-validation-for="Doctor.Id" class="text-danger"></span>
+    </div>
+
+    <div class="form-floating mb-3">
+        <input asp-for="ScheduleDate" class="form-control" type="datetime-local" />
+        <label asp-for="ScheduleDate">Date</label>
+        <span asp-validation-for="ScheduleDate" class="text-danger"></span>
+    </div>
+
+    <div class="form-floating mb-3">
+        <select asp-for="Status" asp-items="@Html.GetEnumSelectList<Status>()" class="form-control">
+        </select>
+        <label asp-for="Status">Status</label>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="MorningShiftStartTime">MorningShiftStartTime</label>
+        <select asp-for="MorningShiftStartTime" asp-items="ViewBag.morningStart" class="form-control"></select>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="MorningShiftEndTime">MorningShiftEndTime</label>
+        <select asp-for="MorningShiftEndTime" asp-items="ViewBag.morningEnd" class="form-control"></select>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="AfternoonShiftStartTime">AfternoonShiftStartTime</label>
+        <select asp-for="AfternoonShiftStartTime" asp-items="ViewBag.evenStart" class="form-control"></select>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="AfternoonShiftEndTime">AfternoonShiftEndTime</label>
+        <select asp-for="AfternoonShiftEndTime" asp-items="ViewBag.evenEnd" class="form-control"></select>
+    </div>
+
+    <button type="submit" class="btn btn-primary">submit</button>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

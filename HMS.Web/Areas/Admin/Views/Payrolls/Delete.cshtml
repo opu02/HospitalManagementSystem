@@ -1,0 +1,8 @@
+﻿@model DAL.Models.Payroll
+<h2>Delete Payroll</h2>
+<p>Are you sure you want to delete payroll for <strong>@Model.Employee?.UserName</strong>?</p>
+<form asp-action="Delete">
+    <input type="hidden" asp-for="Id" />
+    <button type="submit" class="btn btn-danger">Delete</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+</form>
